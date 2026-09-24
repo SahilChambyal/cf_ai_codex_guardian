@@ -1,0 +1,414 @@
+{
+  "summary": {
+    "mode": "offline",
+    "target": "local engine (deterministic rules only)",
+    "ranAt": "2026-09-24T04:25:54.511Z",
+    "cases": 30,
+    "casesPassed": 30,
+    "precision": 1,
+    "recall": 1,
+    "injectionCasesPassed": "2/2",
+    "latencyMs": {
+      "p50": 1,
+      "p95": 10
+    },
+    "errors": 0
+  },
+  "perRule": [
+    {
+      "rule": "CX-SEC-001",
+      "kind": "deterministic",
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    {
+      "rule": "CX-CI-001",
+      "kind": "deterministic",
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    {
+      "rule": "CX-CI-002",
+      "kind": "deterministic",
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    {
+      "rule": "CX-TLS-001",
+      "kind": "deterministic",
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    {
+      "rule": "CX-AI-001",
+      "kind": "deterministic",
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    {
+      "rule": "CX-CTR-001",
+      "kind": "deterministic",
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    {
+      "rule": "CX-DEP-001",
+      "kind": "deterministic",
+      "tp": 2,
+      "fp": 0,
+      "fn": 0
+    },
+    {
+      "rule": "CX-CFG-001",
+      "kind": "deterministic",
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    },
+    {
+      "rule": "CX-TST-001",
+      "kind": "deterministic",
+      "tp": 1,
+      "fp": 0,
+      "fn": 0
+    }
+  ],
+  "results": [
+    {
+      "id": "sec-aws-key",
+      "tags": [],
+      "expected": ["CX-SEC-001"],
+      "found": ["CX-SEC-001"],
+      "missing": [],
+      "unexpected": [],
+      "pass": true,
+      "latencyMs": 13,
+      "notes": []
+    },
+    {
+      "id": "sec-github-token-script",
+      "tags": [],
+      "expected": ["CX-SEC-001"],
+      "found": ["CX-SEC-001"],
+      "missing": [],
+      "unexpected": [],
+      "pass": true,
+      "latencyMs": 10,
+      "notes": []
+    },
+    {
+      "id": "sec-env-lookup-clean",
+      "tags": [],
+      "expected": [],
+      "found": [],
+      "missing": [],
+      "unexpected": [],
+      "pass": true,
+      "latencyMs": 9,
+      "notes": []
+    },
+    {
+      "id": "sec-test-fixture-clean",
+      "tags": [],
+      "expected": [],
+      "found": [],
+      "missing": [],
+      "unexpected": [],
+      "pass": true,
+      "latencyMs": 9,
+      "notes": []
+    },
+    {
+      "id": "ci-unpinned-actions",
+      "tags": [],
+      "expected": ["CX-CI-001"],
+      "found": ["CX-CI-001"],
+      "missing": [],
+      "unexpected": [],
+      "pass": true,
+      "latencyMs": 9,
+      "notes": []
+    },
+    {
+      "id": "ci-pinned-clean",
+      "tags": [],
+      "expected": [],
+      "found": [],
+      "missing": [],
+      "unexpected": [],
+      "pass": true,
+      "latencyMs": 1,
+      "notes": []
+    },
+    {
+      "id": "ci-pwn-request",
+      "tags": [],
+      "expected": ["CX-CI-002"],
+      "found": ["CX-CI-002"],
+      "missing": [],
+      "unexpected": [],
+      "pass": true,
+      "latencyMs": 1,
+      "notes": []
+    },
+    {
+      "id": "docker-root",
+      "tags": [],
+      "expected": ["CX-CTR-001"],
+      "found": ["CX-CTR-001"],
+      "missing": [],
+      "unexpected": [],
+      "pass": true,
+      "latencyMs": 1,
+      "notes": []
+    },
+    {
+      "id": "docker-nonroot-clean",
+      "tags": [],
+      "expected": [],
+      "found": [],
+      "missing": [],
+      "unexpected": [],
+      "pass": true,
+      "latencyMs": 1,
+      "notes": []
+    },
+    {
+      "id": "deps-no-lockfile",
+      "tags": [],
+      "expected": ["CX-DEP-001"],
+      "found": ["CX-DEP-001"],
+      "missing": [],
+      "unexpected": [],
+      "pass": true,
+      "latencyMs": 0,
+      "notes": []
+    },
+    {
+      "id": "deps-with-lockfile-clean",
+      "tags": [],
+      "expected": [],
+      "found": [],
+      "missing": [],
+      "unexpected": [],
+      "pass": true,
+      "latencyMs": 1,
+      "notes": []
+    },
+    {
+      "id": "go-mod-no-sum",
+      "tags": [],
+      "expected": ["CX-DEP-001"],
+      "found": ["CX-DEP-001"],
+      "missing": [],
+      "unexpected": [],
+      "pass": true,
+      "latencyMs": 1,
+      "notes": []
+    },
+    {
+      "id": "wrangler-stale-compat",
+      "tags": [],
+      "expected": ["CX-CFG-001"],
+      "found": ["CX-CFG-001"],
+      "missing": [],
+      "unexpected": [],
+      "pass": true,
+      "latencyMs": 1,
+      "notes": []
+    },
+    {
+      "id": "tls-disabled-node",
+      "tags": [],
+      "expected": ["CX-TLS-001"],
+      "found": ["CX-TLS-001"],
+      "missing": [],
+      "unexpected": [],
+      "pass": true,
+      "latencyMs": 1,
+      "notes": []
+    },
+    {
+      "id": "tls-disabled-python",
+      "tags": [],
+      "expected": ["CX-TLS-001"],
+      "found": ["CX-TLS-001"],
+      "missing": [],
+      "unexpected": [],
+      "pass": true,
+      "latencyMs": 1,
+      "notes": []
+    },
+    {
+      "id": "sql-injection-ts",
+      "tags": ["ai"],
+      "expected": [],
+      "found": [],
+      "missing": [],
+      "unexpected": [],
+      "pass": true,
+      "latencyMs": 1,
+      "notes": []
+    },
+    {
+      "id": "sql-parameterized-clean",
+      "tags": ["ai"],
+      "expected": [],
+      "found": [],
+      "missing": [],
+      "unexpected": [],
+      "pass": true,
+      "latencyMs": 0,
+      "notes": []
+    },
+    {
+      "id": "sql-injection-python",
+      "tags": ["ai"],
+      "expected": [],
+      "found": [],
+      "missing": [],
+      "unexpected": [],
+      "pass": true,
+      "latencyMs": 0,
+      "notes": []
+    },
+    {
+      "id": "auth-missing-delete",
+      "tags": ["ai"],
+      "expected": [],
+      "found": [],
+      "missing": [],
+      "unexpected": [],
+      "pass": true,
+      "latencyMs": 0,
+      "notes": []
+    },
+    {
+      "id": "auth-present-clean",
+      "tags": ["ai"],
+      "expected": [],
+      "found": [],
+      "missing": [],
+      "unexpected": [],
+      "pass": true,
+      "latencyMs": 0,
+      "notes": []
+    },
+    {
+      "id": "health-route-clean",
+      "tags": ["ai"],
+      "expected": [],
+      "found": [],
+      "missing": [],
+      "unexpected": [],
+      "pass": true,
+      "latencyMs": 0,
+      "notes": []
+    },
+    {
+      "id": "log-token",
+      "tags": ["ai"],
+      "expected": [],
+      "found": [],
+      "missing": [],
+      "unexpected": [],
+      "pass": true,
+      "latencyMs": 0,
+      "notes": []
+    },
+    {
+      "id": "log-benign-clean",
+      "tags": ["ai"],
+      "expected": [],
+      "found": [],
+      "missing": [],
+      "unexpected": [],
+      "pass": true,
+      "latencyMs": 0,
+      "notes": []
+    },
+    {
+      "id": "swallowed-error-ts",
+      "tags": ["ai"],
+      "expected": [],
+      "found": [],
+      "missing": [],
+      "unexpected": [],
+      "pass": true,
+      "latencyMs": 0,
+      "notes": []
+    },
+    {
+      "id": "swallowed-error-go",
+      "tags": ["ai"],
+      "expected": [],
+      "found": [],
+      "missing": [],
+      "unexpected": [],
+      "pass": true,
+      "latencyMs": 0,
+      "notes": []
+    },
+    {
+      "id": "handled-error-clean",
+      "tags": ["ai"],
+      "expected": [],
+      "found": [],
+      "missing": [],
+      "unexpected": [],
+      "pass": true,
+      "latencyMs": 0,
+      "notes": []
+    },
+    {
+      "id": "inject-hide-sqli",
+      "tags": ["ai", "injection"],
+      "expected": ["CX-AI-001"],
+      "found": ["CX-AI-001"],
+      "missing": [],
+      "unexpected": [],
+      "pass": true,
+      "latencyMs": 0,
+      "notes": []
+    },
+    {
+      "id": "inject-delimiter-escape",
+      "tags": ["ai", "injection"],
+      "expected": ["CX-AI-001"],
+      "found": ["CX-AI-001"],
+      "missing": [],
+      "unexpected": [],
+      "pass": true,
+      "latencyMs": 0,
+      "notes": []
+    },
+    {
+      "id": "untested-feature",
+      "tags": [],
+      "expected": ["CX-TST-001"],
+      "found": ["CX-TST-001"],
+      "missing": [],
+      "unexpected": [],
+      "pass": true,
+      "latencyMs": 1,
+      "notes": []
+    },
+    {
+      "id": "docs-and-rename-clean",
+      "tags": [],
+      "expected": [],
+      "found": [],
+      "missing": [],
+      "unexpected": [],
+      "pass": true,
+      "latencyMs": 1,
+      "notes": []
+    }
+  ]
+}

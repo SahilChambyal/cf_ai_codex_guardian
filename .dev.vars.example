@@ -1,0 +1,9 @@
+# Copy to .dev.vars for local development; use `wrangler secret put` in production.
+
+# Optional. Read-only GitHub token (no scopes needed for public repos).
+# Raises the GitHub API limit from 60 to 5,000 requests/hour.
+GITHUB_TOKEN=
+
+# Optional. When set, /api/scan and /mcp require `Authorization: Bearer <token>`,
+# and token holders (CI, the eval suite) bypass the per-IP rate limit.
+SCAN_API_TOKEN=

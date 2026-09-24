@@ -1,0 +1,40 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "codex-guardian",
+  "main": "src/server.ts",
+  "compatibility_date": "2026-06-11",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": { "enabled": true },
+  "ai": { "binding": "AI", "remote": true },
+  "assets": {
+    "directory": "./public",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/agents/*", "/api/*", "/mcp", "/mcp/*"]
+  },
+  "durable_objects": {
+    "bindings": [{ "class_name": "CodexAgent", "name": "CodexAgent" }]
+  },
+  "workflows": [
+    {
+      "name": "codex-review-workflow",
+      "binding": "REVIEW_WORKFLOW",
+      "class_name": "ReviewWorkflow"
+    }
+  ],
+  // Rate limits protect the public demo from burning the Workers AI budget.
+  "ratelimits": [
+    {
+      // Scans started per workspace (chat) or per IP (API/MCP).
+      "name": "SCAN_LIMITER",
+      "namespace_id": "1001",
+      "simple": { "limit": 6, "period": 60 }
+    },
+    {
+      // Chat turns per workspace and connection attempts per IP.
+      "name": "CHAT_LIMITER",
+      "namespace_id": "1002",
+      "simple": { "limit": 20, "period": 60 }
+    }
+  ],
+  "migrations": [{ "new_sqlite_classes": ["CodexAgent"], "tag": "v1" }]
+}

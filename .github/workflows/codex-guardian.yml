@@ -1,0 +1,35 @@
+# Dogfooding: every PR to this repo is checked by the deployed Codex Guardian.
+# Enable by setting the repository variable CODEX_GUARDIAN_URL (and the secret
+# SCAN_API_TOKEN if the deployment requires one). Findings appear as inline
+# annotations; critical/high findings fail the check.
+name: codex-guardian
+
+on: pull_request
+
+permissions:
+  contents: read
+
+jobs:
+  codex:
+    if: ${{ vars.CODEX_GUARDIAN_URL != '' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+        with:
+          fetch-depth: 0
+      - name: Check this PR against the Engineering Codex
+        env:
+          CODEX_URL: ${{ vars.CODEX_GUARDIAN_URL }}
+          CODEX_TOKEN: ${{ secrets.SCAN_API_TOKEN }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          git diff "$BASE_SHA"...HEAD > pr.diff
+          jq -Rs '{diff: .}' pr.diff > body.json
+          curl -sS --fail-with-body --max-time 300 -X POST "$CODEX_URL/api/scan" \
+            -H "content-type: application/json" \
+            -H "authorization: Bearer $CODEX_TOKEN" \
+            --data @body.json > result.json
+          jq -r '.findings[] | "::\(if .severity == "critical" or .severity == "high" then "error" else "warning" end) file=\(.file),line=\(.line // 1),title=\(.ruleId)::\(.message)"' result.json
+          jq -r '.notes[] | "::notice::\(.)"' result.json
+          jq -e '.summary.blocking == 0' result.json > /dev/null
